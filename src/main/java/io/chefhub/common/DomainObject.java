@@ -23,7 +23,7 @@ import org.neo4j.ogm.annotation.GraphId;
  * <h1>DomainObject/h1>
  *
  * DomainObject class that implements
- * {@link INode} node interface.
+ * {@link io.chefhub.common.INode} node interface.
  * <p>
  * DomainObject is an abstract class that
  * contains the primary blueprint methods
@@ -94,7 +94,7 @@ public abstract class DomainObject implements INode {
 	 * @throws ClassCastException   if the specified object's type prevents it
 	 *                              from being compared to this object.
 	 */
-	public int compareTo(INode o) {
+	private int compareTo(INode o) {
 		return this.getId().compareTo(o.getId());
 	}
 

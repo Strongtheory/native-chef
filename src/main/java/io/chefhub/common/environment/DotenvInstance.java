@@ -30,13 +30,13 @@ import io.chefhub.common.exceptions.DotenvException;
  * @version 0.0.1
  * @since   0.0.1
  */
-public class DotenvInstance {
+class DotenvInstance {
 
 	// Root Folder
 	private String location = System.getProperty("user.dir");
 
 	// Default Constructor
-	public DotenvInstance() {}
+	DotenvInstance() {}
 
 	/**
 	 * Finds the location of the .env file
@@ -46,7 +46,7 @@ public class DotenvInstance {
 	 * @param location  - preset location
 	 * @return location - location of .env file
 	 */
-	public DotenvInstance envLocation(String location) {
+	DotenvInstance envLocation(String location) {
 		if (!location.endsWith("/"))
 			location += "/";
 		setLocation(location);
@@ -61,7 +61,7 @@ public class DotenvInstance {
 	 * @return DotenvDriver instance - Provided object with methods to extract information.
 	 * @throws DotenvException       - Invalid .env file or cannor access file.
 	 */
-	public Dotenv createInstance() throws DotenvException {
+	Dotenv createInstance() throws DotenvException {
 		return new DotenvDriver(location);
 	}
 

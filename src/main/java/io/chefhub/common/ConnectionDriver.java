@@ -15,8 +15,15 @@
  */
 package io.chefhub.common;
 
+import io.chefhub.common.exceptions.DotenvException;
+import org.neo4j.ogm.driver.Driver;
+
+import java.net.URISyntaxException;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
 /**
- * <h1>GraphFactoryConnection</h1>
+ * <h1>ConnectionDriver</h1>
  *
  * GraphFactory class provides the necessary
  * connection methods to establish a link between
@@ -28,10 +35,6 @@ package io.chefhub.common;
  * @version 0.0.1
  * @since   0.0.1
  */
-public class GraphFactoryConnection {
-
-	// GraphFactory Instance
-	private static GraphFactoryConnection graphFactory;
-
-	//
+public class ConnectionDriver {
+	
 }

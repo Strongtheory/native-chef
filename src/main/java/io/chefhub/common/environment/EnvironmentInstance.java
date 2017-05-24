@@ -42,7 +42,7 @@ public class EnvironmentInstance {
 	private final static Logger LOGGER = Logger.
 			getLogger(EnvironmentInstance.class.getName());
 
-	// Default
+	// Default Constructor
 	public EnvironmentInstance() {}
 
 	/**
@@ -55,12 +55,12 @@ public class EnvironmentInstance {
 	public static Dotenv createDotenvInstance() {
 		try {
 			LOGGER.log(Level.INFO, "Create Dotenv instance "
-					+ "with location of nativechef.env file.");
+				+ "with location of chef.env file.");
 			return new DotenvInstance().
-					envLocation("src/main/resources").
-					createInstance();
+					envLocation("src/main/resources")
+					.createInstance();
 		} catch (DotenvException e) {
-			LOGGER.log(Level.SEVERE, "Did not file",
+			LOGGER.log(Level.SEVERE, "Did not find file",
 					ExceptionUtils.getStackTrace(e));
 			e.printStackTrace();
 			return null;
@@ -83,17 +83,67 @@ public class EnvironmentInstance {
 	 * @return                 - driver
 	 * @throws DotenvException - invalid value
 	 */
-	public static String retrieveDRIVER(Dotenv env) throws DotenvException {
+	public static String retrieveDriver(Dotenv env) throws DotenvException {
 		return env.retrieveVariable(Variables.DRIVER.getVal());
 	}
 
 	/**
 	 *
 	 * @param env              - configured Dotenv instance
-	 * @return                 - driver
+	 * @return                 - username
 	 * @throws DotenvException - invalid value
 	 */
-	public static String retrieveUSERNAME(Dotenv env) throws DotenvException {
+	public static String retrienveUsername(Dotenv env) throws DotenvException {
 		return env.retrieveVariable(Variables.USERNAME.getVal());
+	}
+
+	/**
+	 *
+	 * @param env              - configured Dotenv instance
+	 * @return                 - password
+	 * @throws DotenvException - invalid value
+	 */
+	public static String retrienvePassword(Dotenv env) throws DotenvException {
+		return env.retrieveVariable(Variables.PASSWORD.getVal());
+	}
+
+	/**
+	 *
+	 * @param env              - configured Dotenv instance
+	 * @return                 - GRAPHENEDB_URL
+	 * @throws DotenvException - invalid value
+	 */
+	public static String retrieveGraphUrl(Dotenv env) throws DotenvException {
+		return env.retrieveVariable(Variables.GRAPHENEDB_URL.getVal());
+	}
+
+	/**
+	 *
+	 * @param env              - configured Dotenv instance
+	 * @return                 - GRAPHENEDB_BOLT_URL
+	 * @throws DotenvException - invalid value
+	 */
+	public static String retrieveBoltUrl(Dotenv env) throws DotenvException {
+		return env.retrieveVariable(Variables.GRAPHENEDB_BOLT_URL.getVal());
+	}
+
+	/**
+	 *
+	 * @param env              - configured Dotenv instance
+	 * @return                 - GRAPHENEDB_BOLT_USER
+	 * @throws DotenvException - invalid value
+	 */
+	public static String retrieveBoltUser(Dotenv env) throws DotenvException {
+		return env.retrieveVariable(Variables.GRAPHENEDB_BOLT_USER.getVal());
+	}
+
+	/**
+	 *
+	 * @param env              - configured Dotenv instance
+	 * @return                 - GRAPHENEDB_BOLT_PASSWORD
+	 * @throws DotenvException - invalid value
+	 */
+	public static String retrieveBoltPassword(Dotenv env) throws DotenvException {
+		return env.retrieveVariable(Variables.GRAPHENEDB_BOLT_PASSWORD.getVal());
 	}
 }
