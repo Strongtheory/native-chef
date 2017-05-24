@@ -24,7 +24,7 @@ import io.chefhub.common.exceptions.DotenvException;
 import io.chefhub.common.Variables;
 
 /**
- * <h1>NativeChefInstance</h1>
+ * <h1>{@link io.chefhub.common.environment.EnvironmentInstance}</h1>
  *
  * Helper class that creates a
  * {@link io.chefhub.common.environment.DotenvDriver}

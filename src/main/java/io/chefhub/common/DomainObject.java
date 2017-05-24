@@ -20,7 +20,7 @@ import java.lang.reflect.Field;
 import org.neo4j.ogm.annotation.GraphId;
 
 /*
- * <h1>DomainObject/h1>
+ * <h1>{@link io.chefhub.common.DomainObject}/h1>
  *
  * DomainObject class that implements
  * {@link io.chefhub.common.INode} node interface.

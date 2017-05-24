@@ -18,7 +18,7 @@ package io.chefhub.common.environment;
 import io.chefhub.common.exceptions.DotenvException;
 
 /**
- * <h1>Dotenv</h1>
+ * <h1>{@link io.chefhub.common.environment.Dotenv}</h1>
  *
  * Custom dotenv interface containing
  * method stubs and declarations for

@@ -27,12 +27,12 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import io.chefhub.common.exceptions.DotenvException;
 
 /**
- * <h1>DotenvDriver</h1>
+ * <h1>{@link io.chefhub.common.environment.DotenvDriver}</h1>
  *
  * Driver class for loading
  * and validating value pairs
  * from a local or remote .env
- * file
+ * file. Implements {@link Dotenv}
  * <p>
  *
  * @author  NativeChef
@@ -51,7 +51,7 @@ public class DotenvDriver implements Dotenv {
 	private Map<String, String> variables;
 
 	// Constructor
-	public DotenvDriver(String location) {
+	DotenvDriver(String location) {
 		setLocation(location);
 	}
 
@@ -78,20 +78,19 @@ public class DotenvDriver implements Dotenv {
 		variables = new HashMap<>();
 		try {
 			String fileContent = new String(Files.
-					readAllBytes(Paths.get(location + "/native-chef.env")));
+					readAllBytes(Paths.get(location + "/chef.env")));
 			String[] lineContent = fileContent.split("\n");
 			for (String line : lineContent) {
 				String[] lineProp = line.split("=");
 				// Invalid Format
-				if (lineProp.length != 2) {
+				if (lineProp.length != 2)
 					LOGGER.log(Level.SEVERE, "Improper format entry");
-					throw new DotenvException("Incorrect format entry");
-				}
 				LOGGER.log(Level.INFO, "Put key: " +
 						lineProp[0] + ", value: " + lineProp[1]);
 				variables.put(lineProp[0], lineProp[1]);
 			}
 		} catch (Exception e) {
+			// Failed to retrieve file
 			LOGGER.log(Level.SEVERE,
 					ExceptionUtils.getStackTrace(e));
 			throw new DotenvException(e);
@@ -119,8 +118,8 @@ public class DotenvDriver implements Dotenv {
 			throw new DotenvException("Key value not found in .env file.");
 		} else {
 			LOGGER.log(Level.INFO, "Key value loaded from .env file. " + value);
+			return value;
 		}
-		return value;
 	}
 
 	/**

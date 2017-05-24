@@ -18,7 +18,7 @@ package io.chefhub.common.environment;
 import io.chefhub.common.exceptions.DotenvException;
 
 /**
- * <h1>DotenvInstance</h1>
+ * <h1>{@link io.chefhub.common.environment.DotenvInstance}</h1>
  *
  * Dotenv instance class that creates
  * the primary instance for reading

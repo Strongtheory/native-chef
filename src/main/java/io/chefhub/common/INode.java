@@ -18,7 +18,7 @@ package io.chefhub.common;
 import java.io.Serializable;
 
 /*
- * <h1>INode</h1>
+ * <h1>{@link io.chefhub.common.INode}</h1>
  *
  * Node interface that extends
  * {@link Serializable}.
