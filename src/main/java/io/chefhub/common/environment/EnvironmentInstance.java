@@ -67,15 +67,15 @@ public class EnvironmentInstance {
 		}
 	}
 
-	/**
-	 *
-	 * @param env              - configured Dotenv instance
-	 * @return                 - URI
-	 * @throws DotenvException - invalid value
-	 */
-	public static String retrieveURI(Dotenv env) throws DotenvException {
-		return env.retrieveVariable(Variables.URI.getVal());
-	}
+	// /**
+	//  *
+	//  * @param env              - configured Dotenv instance
+	//  * @return                 - URI
+	//  * @throws DotenvException - invalid value
+	//  */
+	// public static String retrieveURI(Dotenv env) throws DotenvException {
+	// 	return env.retrieveVariable(Variables.URI.getVal());
+	// }
 
 	/**
 	 *
@@ -87,25 +87,25 @@ public class EnvironmentInstance {
 		return env.retrieveVariable(Variables.DRIVER.getVal());
 	}
 
-	/**
-	 *
-	 * @param env              - configured Dotenv instance
-	 * @return                 - username
-	 * @throws DotenvException - invalid value
-	 */
-	public static String retrienveUsername(Dotenv env) throws DotenvException {
-		return env.retrieveVariable(Variables.USERNAME.getVal());
-	}
+	// /**
+	//  *
+	//  * @param env              - configured Dotenv instance
+	//  * @return                 - username
+	//  * @throws DotenvException - invalid value
+	//  */
+	// public static String retrienveUsername(Dotenv env) throws DotenvException {
+	// 	return env.retrieveVariable(Variables.USERNAME.getVal());
+	// }
 
-	/**
-	 *
-	 * @param env              - configured Dotenv instance
-	 * @return                 - password
-	 * @throws DotenvException - invalid value
-	 */
-	public static String retrienvePassword(Dotenv env) throws DotenvException {
-		return env.retrieveVariable(Variables.PASSWORD.getVal());
-	}
+	// /**
+	//  *
+	//  * @param env              - configured Dotenv instance
+	//  * @return                 - password
+	//  * @throws DotenvException - invalid value
+	//  */
+	// public static String retrienvePassword(Dotenv env) throws DotenvException {
+	// 	return env.retrieveVariable(Variables.PASSWORD.getVal());
+	// }
 
 	/**
 	 *

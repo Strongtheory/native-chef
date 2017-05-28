@@ -135,7 +135,9 @@ public class DotenvDriver implements Dotenv {
 	 */
 	@Override
 	public String updateVariable(String key) throws DotenvException {
-		// TODO Auto-generated method stub
-		return null;
+		if (variables == null)
+			validateFileIntegrity();
+		String value = variables.get(key);
+		return value;
 	}
 }

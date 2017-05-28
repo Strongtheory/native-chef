@@ -15,35 +15,37 @@
  */
 package io.chefhub.common;
 
-import io.chefhub.common.environment.Dotenv;
-import io.chefhub.common.exceptions.DotenvException;
-import org.neo4j.driver.v1.Driver;
+import java.util.Map;
+import java.util.logging.Logger;
 
 /**
- * <h1>{@link io.chefhub.common.ConnectionDriver}</h1>
+ * <h1>{@link io.chefhub.common.StandardOperation}</h1>
  *
- * GraphFactory class provides the necessary
- * connection methods to establish a link between
- * the neo4j chalk graphene database to the application
- * service context.
+ * Contains method stubs and definitions
+ * for each standard REST operation
+ * for all domain nodes. (i.e Persisting
+ * Object, creating object, retrieving object,
+ * execute cypher query)
  * <p>
  *
  * @author  NativeChef
  * @version 0.0.1
  * @since   0.0.1
  */
-class ConnectionDriver {
+public class StandardOperation {
 
-	// ConnectionDriver Instance
-	private static ConnectionDriver _driver;
+	// Class Logger
+	private final Logger LOGGER = Logger.
+			getLogger(StandardOperation.class.getName());
 
-	// Dotenv Instance
-	private static Dotenv dotenvInstance;
-
-	// Constructor
-	private ConnectionDriver() {}
-
-	private Driver createConnection() throws DotenvException {
+	/**
+	 * Retrieve node object by referencing id and class.
+	 * <p>
+	 * 
+	 * @param domainMap - map object with passed in domain id and class
+	 * @return			- node that is referenced
+	 */
+	public static DomainObject getNodeObject(Map<String, Object> domainMap) {
 		return null;
 	}
 }

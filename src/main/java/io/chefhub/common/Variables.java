@@ -28,10 +28,7 @@ package io.chefhub.common;
  * @since   0.0.1
  */
 public enum Variables {
-	URI("URI"),
 	DRIVER("driver"),
-	USERNAME("username"),
-	PASSWORD("password"),
 	GRAPHENEDB_URL("GRAPHENEDB_URL"),
 	GRAPHENEDB_BOLT_URL("GRAPHENEDB_BOLT_URL"),
 	GRAPHENEDB_BOLT_USER("GRAPHENEDB_BOLT_USER"),

@@ -43,7 +43,7 @@
 		<!-- Database -->
 		<neo4j.version>3.2.0-alpha08</neo4j.version>
 		<neo4j.java>1.3.0-rc1</neo4j.java>
-		<neo4j.ogm.bolt>3.0.0-M01</neo4j.ogm.bolt>
+		<neo4j.ogm.bolt>2.1.0</neo4j.ogm.bolt>
 		<neo4j.ogm.core>3.0.0-M01</neo4j.ogm.core>
 		<neo4j.jdbc>3.0.1</neo4j.jdbc>
 
@@ -127,32 +127,27 @@
 		<!-- end::neo4j-java -->
 
 		<!-- tag::neo4j-bolt -->
-		<!--
 		<dependency>
 			<groupId>org.neo4j</groupId>
 			<artifactId>neo4j-ogm-bolt-driver</artifactId>
 			<version>${neo4j.ogm.bolt}</version>
 		</dependency>
-		-->
 		<!-- end::neo4j-bolt -->
 
 		<!-- tag::neo4j-core -->
-		<!--
 		<dependency>
 			<groupId>org.neo4j</groupId>
 			<artifactId>neo4j-ogm-core</artifactId>
-			<version>${neo4j.ogm.core}</version>--><!--$NO-MVN-MAN-VER$-->
-		<!-- </dependency> -->
+			<version>${neo4j.ogm.core}</version>
+		</dependency>
 		<!-- end::neo4j-core -->
 
 		<!-- tag::neo4j-jdbc -->
-		<!--
 		<dependency>
 			<groupId>org.neo4j</groupId>
 			<artifactId>neo4j-jdbc-driver</artifactId>
 			<version>${neo4j.jdbc}</version>
 		</dependency>
-		-->
 		<!-- end::neo4j-jdbc -->
 
 
