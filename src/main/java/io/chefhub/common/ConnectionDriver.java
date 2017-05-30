@@ -16,7 +16,6 @@
 package io.chefhub.common;
 
 import java.net.URISyntaxException;
-import java.sql.SQLException;
 
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Driver;
@@ -28,8 +27,6 @@ import org.neo4j.ogm.session.SessionFactory;
 import io.chefhub.common.environment.Dotenv;
 import io.chefhub.common.environment.EnvironmentInstance;
 import io.chefhub.common.exceptions.DotenvException;
-
-import java.net.URISyntaxException;
 
 /**
  * <h1>{@link io.chefhub.common.ConnectionDriver}</h1>
@@ -106,7 +103,20 @@ class ConnectionDriver {
 	 * @return sessionFactory  - opens a new database session with SessionFactory
 	 */
 	public static Session getSessionFactory() throws DotenvException {
-		
-		return null;
+		// Prepare dotenv instance var
+		dotenvInstance = EnvironmentInstance.createDotenvInstance();
+		// Create Configuration
+		Configuration sessionConfig = new Configuration();
+		// Set variables
+		String URI         = EnvironmentInstance.retrieveBoltUrl(dotenvInstance);
+		String username    = EnvironmentInstance.retrieveBoltUser(dotenvInstance);
+		String password    = EnvironmentInstance.retrieveBoltPassword(dotenvInstance);
+		String driverClass = EnvironmentInstance.retrieveDriver(dotenvInstance);
+		// Set Parameters
+		sessionConfig.driverConfiguration().setDriverClassName(driverClass)
+				.setURI(URI).setCredentials(username, password);
+		// Create new session with package name and configuration
+		SessionFactory sessionFactory = new SessionFactory(sessionConfig, "io.numis");
+		return sessionFactory.openSession();
 	}
 }

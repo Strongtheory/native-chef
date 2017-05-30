@@ -13,54 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.chefhub.common.exceptions;
+package io.chefhub.common.exceptions.status;
 
 /**
- * <h1>{@link io.chefhub.common.exceptions.DotenvException}</h1>
+ * <h1>{@link io.chefhub.common.exceptions.status.ResourceNotFoundException}</h1>
  *
- * Custom exception for dotenv package
- * if environment file does not exist or
- * is not defined.
+ * Custom exception for HTTP status 404.
  * <p>
  *
  * @author  NativeChef
  * @version 0.0.1
  * @since   0.0.1
  */
-public class DotenvException extends Exception {
+public final class ResourceNotFoundException extends RuntimeException {
 
 	/**
-	 *
+	 * Default Serial ID
 	 */
-	private static final long serialVersionUID = 7680618946891216558L;
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Default Constructor
-	 */
-	public DotenvException() {
+	// Default Constructor
+	public ResourceNotFoundException() {
 		super();
 	}
 
-	/**
-	 * Exception Constructor
-	 *
-	 * @param e - Exception thrown
-	 */
-	public DotenvException(Exception e) {
-		super(e);
-	}
-
-	/**
-	 * Message Constructor
-	 *
-	 * @param message - exception message
-	 */
-	public DotenvException(String message) {
+	// Message Constructor
+	public ResourceNotFoundException(final String message) {
 		super(message);
 	}
 
-	@Override
-	public String toString() {
-		return super.getMessage();
+	// throw cause
+	public ResourceNotFoundException(final Throwable cause) {
+		super(cause);
+	}
+
+	// Message, Cause
+	public ResourceNotFoundException(final String message, final Throwable cause) {
+		super(message, cause);
 	}
 }
