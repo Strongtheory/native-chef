@@ -45,6 +45,10 @@ public class User extends DomainObject {
 	// Annotated User Properties
 	@GraphId
 	private Long id;
+
+	// Non-recycable id
+	@Property
+	private Long userId;
 	
 	@Property
 	private String email;

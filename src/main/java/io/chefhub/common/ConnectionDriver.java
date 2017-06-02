@@ -41,7 +41,7 @@ import io.chefhub.common.exceptions.DotenvException;
  * @version 0.0.1
  * @since   0.0.1
  */
-class ConnectionDriver {
+public class ConnectionDriver {
 
 	// ConnectionDriver Instance
 	private static ConnectionDriver _driver;
@@ -118,5 +118,19 @@ class ConnectionDriver {
 		// Create new session with package name and configuration
 		SessionFactory sessionFactory = new SessionFactory(sessionConfig, "io.numis");
 		return sessionFactory.openSession();
+	}
+
+	/**
+	 * Close driver instance session with _driver.
+	 * <p>
+	 */
+	public static void closeConnection() throws IllegalAccessException {
+		try {
+			Driver driver = getDriverInstance();
+			driver.close();
+		} catch (DotenvException | URISyntaxException |
+				ClassNotFoundException | InstantiationException e) {
+			e.printStackTrace();
+		}
 	}
 }

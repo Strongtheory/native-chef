@@ -15,7 +15,12 @@
  */
 package io.chefhub.common;
 
+import io.chefhub.common.exceptions.DotenvException;
+import org.neo4j.ogm.session.Session;
+import org.neo4j.ogm.transaction.Transaction;
+
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -35,7 +40,7 @@ import java.util.logging.Logger;
 public class StandardOperation {
 
 	// Class Logger
-	private final Logger LOGGER = Logger.
+	private static final Logger LOGGER = Logger.
 			getLogger(StandardOperation.class.getName());
 
 	/**
@@ -46,6 +51,59 @@ public class StandardOperation {
 	 * @return			- node that is referenced
 	 */
 	public static DomainObject getNodeObject(Map<String, Object> domainMap) {
-		return null;
+		Long id = (Long) domainMap.get("id");
+		@SuppressWarnings("unchecked")
+		Class<DomainObject> domainClass = (Class<DomainObject>) domainMap.get("class");
+		// Start Class Transaction
+		Transaction tx = null;
+		DomainObject objectNode = null;
+		Session sess;
+		try {
+			sess = ConnectionDriver.getSessionFactory();
+			LOGGER.log(Level.INFO, "Obtain and open session instance.");
+			tx = sess.beginTransaction();
+			LOGGER.log(Level.INFO, "Begin session transaction");
+			objectNode = sess.load(domainClass, id);
+			LOGGER.log(Level.INFO, "Load node class and node id");
+			tx.commit();
+			LOGGER.log(Level.INFO, "Explicitly commit the transaction instance.");
+		} catch (Exception e) {
+			// TODO: Handle custom exception.
+			if (tx != null)
+				tx.rollback();
+			LOGGER.log(Level.SEVERE, "Could not load class: " + domainClass.toString(), e);
+		} finally {
+			if (tx != null)
+				tx.close();
+			LOGGER.log(Level.INFO, "Close transaction instance.");
+		}
+		return objectNode;
+	}
+
+	/**
+	 * Create node transaction with session and persist (save) node.
+	 * <p>
+	 *
+	 * @param domainNode - node being persisted through transaction
+	 * @return			 - true: Create transaction and save node
+	 * 					   false: exception caught in session
+	 */
+	public static boolean persistObject(Object domainNode) {
+		Session sess;
+		Transaction tx = null;
+		try {
+			sess = ConnectionDriver.getSessionFactory();
+			LOGGER.log(Level.INFO, "Obtain and open session instance.");
+			tx = sess.beginTransaction();
+			LOGGER.log(Level.INFO, "Begin session transaction.");
+			sess.save(domainNode);s
+			LOGGER.log(Level.INFO, "Save node");
+			tx.commit();
+			LOGGER.log(Level.INFO, "Explicitly commit the transaction instance.");
+			return true;
+		} catch (DotenvException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
