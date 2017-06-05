@@ -16,20 +16,18 @@
 package io.chefhub.domain;
 
 import java.util.Properties;
-import java.util.Set;
 
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
-import org.neo4j.ogm.annotation.Relationship;
-import org.neo4j.ogm.annotation.typeconversion.DateString;
 
 import io.chefhub.common.DomainObject;
 
 /**
- * <h1>{@link io.chefhub.domain.User}</h1>
+ * <h1>{@link io.chefhub.domain.m
+ * }</h1>
  *
- * User node class with respective properties.
+ * Member node class with respective properties.
  * <p>
  * Extends {@link DomainObject} containing
  * the base methods for comparison and debugging.
@@ -39,16 +37,16 @@ import io.chefhub.common.DomainObject;
  * @version 0.0.1
  * @since   0.0.1
  */
- @NodeEntity
-public class User extends DomainObject {
+@NodeEntity
+public class Member extends DomainObject {
 	
-	// Annotated User Properties
+	// Annotated Member Properties
 	@GraphId
 	private Long id;
 
 	// Non-recycable id
 	@Property
-	private Long userId;
+	private Long memberId;
 	
 	@Property
 	private String email;
@@ -75,10 +73,10 @@ public class User extends DomainObject {
 	private double account_balance;
 	
 	// Default Constructor
-	public User() {}
+	public Member() {}
 	
 	// Properties Constructor
-	public User(Properties properties) {
+	public Member(Properties properties) {
 	}
 
 

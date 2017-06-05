@@ -41,7 +41,7 @@ import io.chefhub.common.exceptions.DotenvException;
  * @version 0.0.1
  * @since   0.0.1
  */
-public class ConnectionDriver {
+class ConnectionDriver {
 
 	// ConnectionDriver Instance
 	private static ConnectionDriver _driver;
@@ -50,8 +50,7 @@ public class ConnectionDriver {
 	private static Dotenv dotenvInstance;
 
 	// Constructor
-	private ConnectionDriver() throws DotenvException, ClassNotFoundException,
-			IllegalAccessException, InstantiationException, URISyntaxException {}
+	private ConnectionDriver() {}
 
 	/**
 	 * Sets a connection to the BOLT
@@ -65,7 +64,7 @@ public class ConnectionDriver {
 	 * @throws DotenvException        - failed to retrieve var from .env file
 	 * @return driver                 - Established connection to the bolt database URI.
 	 */
-	private Driver createConnection() throws DotenvException, URISyntaxException,
+	private Driver createDbConnection() throws DotenvException, URISyntaxException,
 			ClassNotFoundException, InstantiationException, IllegalAccessException {
 		// Prepare an environment instance
 		dotenvInstance = EnvironmentInstance.createDotenvInstance();
@@ -89,10 +88,10 @@ public class ConnectionDriver {
 	 * @throws DotenvException        - failed to retrieve var from .env file
 	 * @return driver                 - connected driver instance
 	 */
-	public static Driver getDriverInstance() throws DotenvException, URISyntaxException,
+	static Driver getDriverConnectionInstance() throws DotenvException, URISyntaxException,
 			ClassNotFoundException, InstantiationException, IllegalAccessException {
 		if (_driver == null) _driver = new ConnectionDriver();
-		return _driver.createConnection();
+		return _driver.createDbConnection();
 	}
 	
 	/**
@@ -102,7 +101,7 @@ public class ConnectionDriver {
 	 * @throws DotenvException - failed to retrieve variable to .env file
 	 * @return sessionFactory  - opens a new database session with SessionFactory
 	 */
-	public static Session getSessionFactory() throws DotenvException {
+	static Session getSessionInstance() throws DotenvException {
 		// Prepare dotenv instance var
 		dotenvInstance = EnvironmentInstance.createDotenvInstance();
 		// Create Configuration
@@ -116,7 +115,7 @@ public class ConnectionDriver {
 		sessionConfig.driverConfiguration().setDriverClassName(driverClass)
 				.setURI(URI).setCredentials(username, password);
 		// Create new session with package name and configuration
-		SessionFactory sessionFactory = new SessionFactory(sessionConfig, "io.numis");
+		SessionFactory sessionFactory = new SessionFactory(sessionConfig, "io.chefhub");
 		return sessionFactory.openSession();
 	}
 
@@ -124,9 +123,9 @@ public class ConnectionDriver {
 	 * Close driver instance session with _driver.
 	 * <p>
 	 */
-	public static void closeConnection() throws IllegalAccessException {
+	static void closeDriverConnection() throws IllegalAccessException {
 		try {
-			Driver driver = getDriverInstance();
+			Driver driver = getDriverConnectionInstance();
 			driver.close();
 		} catch (DotenvException | URISyntaxException |
 				ClassNotFoundException | InstantiationException e) {
